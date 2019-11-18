@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../Css/StyleHome.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quanlyquancafe.FXMLHomeController">
+   <top>
+      <HBox prefHeight="0.0" prefWidth="1000.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" maxWidth="-Infinity" prefHeight="127.0" prefWidth="208.0" style="-fx-background-color: #5e95be;">
+               <children>
+                  <FontAwesomeIcon fill="WHITE" iconName="COFFEE" size="3em" styleClass="cursor_hand" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MT Entertainment" wrappingWidth="115.5050048828125">
+                     <font>
+                        <Font name="American Typewriter Bold" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="98.0" prefWidth="603.0">
+                     <children>
+                        <JFXTextField fx:id="txtSearch" focusColor="#5e95be" maxWidth="377.0" minWidth="341.0" prefHeight="0.0" prefWidth="341.0" promptText="Search...">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                        <FontAwesomeIcon fill="#485460" iconName="SEARCH" size="1.5em" styleClass="cursor_hand" textAlignment="CENTER" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="98.0" prefWidth="869.0">
+                     <children>
+                        <FontAwesomeIcon iconName="BELL_O" size="1.5em" styleClass="cursor_hand">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </FontAwesomeIcon>
+                        <ImageView fitHeight="43.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../Images/manager.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="lbDisplayName" text="Admin">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#exitProgram" prefHeight="55.0" prefWidth="69.0" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <FontAwesomeIcon iconName="SIGN_OUT" size="3em" styleClass="cursor_hand" />
+                           </graphic>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></HBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="571.0" prefWidth="208.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="80.0" styleClass="hover_border">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="30.0" top="70.0" />
+               </VBox.margin>
+               <children>
+                  <FontAwesomeIcon iconName="CIRCLE_ALT_NOTCH" size="1.5em">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button mnemonicParsing="false" prefHeight="93.0" prefWidth="168.0" style="-fx-background-color: transparent;" text="Projects">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets right="60.0" />
+                     </padding>
+                     <font>
+                        <Font name="Charter Roman" size="18.0" />
+                     </font></Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="80.0" styleClass="hover_border">
+               <children>
+                  <FontAwesomeIcon iconName="BOOK" size="1.5em">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button mnemonicParsing="false" onAction="#sceneDrink" prefHeight="93.0" prefWidth="168.0" style="-fx-background-color: transparent;" text="  Drink Menu">
+                     <font>
+                        <Font name="Charter Roman" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets right="60.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="80.0" styleClass="hover_border">
+               <children>
+                  <FontAwesomeIcon iconName="LIST_ALT" size="1.5em">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button fx:id="btCategory" mnemonicParsing="false" onAction="#sceneCategory" prefHeight="93.0" prefWidth="168.0" style="-fx-background-color: transparent;" text="Category">
+                     <font>
+                        <Font name="Charter Roman" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets right="60.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="80.0" styleClass="hover_border">
+               <children>
+                  <FontAwesomeIcon iconName="CIRCLE_ALT_NOTCH" size="1.5em">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Button mnemonicParsing="false" onAction="#sceneDrink" prefHeight="93.0" prefWidth="168.0" style="-fx-background-color: transparent;" text="Projects">
+                     <font>
+                        <Font name="Charter Roman" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets right="60.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="168.0" styleClass="hover_border">
+               <children>
+                  <FontAwesomeIcon iconName="COG" size="1.5em">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #485460;" text="Settings" textAlignment="CENTER">
+                     <font>
+                        <Font name="Charter Roman" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="120.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox id="paneBackground" style="-fx-background-color: #DBDBDB;" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <children>
+            <StackPane prefHeight="803.0" prefWidth="952.0">
+               <children>
+                  <Pane fx:id="pDrinkCategory" onDragDetected="#addDrinkCategoryHandler" prefHeight="541.0" prefWidth="952.0" style="-fx-background-color: transparent;" visible="false">
+                     <children>
+                        <TableView id="CategoryTableView" fx:id="tbDrinkCategory" prefHeight="453.0" prefWidth="282.0">
+                          <columns>
+                            <TableColumn id="colCategoryID" fx:id="colIDDrinkCategory" prefWidth="100.0" text="Catagory ID" />
+                            <TableColumn id="colCategoryName" fx:id="colDrinkCategoryName" prefWidth="180.0" text="Category Name" />
+                          </columns>
+                        </TableView>
+                        <Pane layoutX="476.0" prefHeight="87.0" prefWidth="275.0" style="-fx-border-color: #5e95be;">
+                           <children>
+                              <JFXTextField id="txtCategoryID" fx:id="txtIDDrinkCategory" focusColor="#5e95be" layoutX="-2.0" layoutY="44.0" maxWidth="279.0" minWidth="279.0" prefHeight="43.0" prefWidth="279.0" promptText="Type Category ID...">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </JFXTextField>
+                              <Label layoutX="79.0" layoutY="-3.0" prefHeight="35.0" prefWidth="132.0" style="-fx-font-family: Charter; -fx-font-size: 20px;" text="Category ID" textAlignment="CENTER" textFill="#5e95be">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="476.0" layoutY="129.0" prefHeight="87.0" prefWidth="275.0" style="-fx-border-color: #5e95be;">
+                           <children>
+                              <JFXTextField id="txtCategoryName" fx:id="txtNameDrinkCategory" focusColor="#5e95be" layoutX="-2.0" layoutY="44.0" maxWidth="279.0" minWidth="279.0" prefHeight="43.0" prefWidth="279.0" promptText="Type Category Name...">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </JFXTextField>
+                              <Label layoutX="73.0" layoutY="-3.0" prefHeight="35.0" prefWidth="144.0" style="-fx-font-family: Charter; -fx-font-size: 20px;" text="Category Name" textAlignment="CENTER" textFill="#5e95be">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <JFXButton id="btInsert" fx:id="btAddDrinkCategory" layoutX="367.0" layoutY="621.0" onAction="#addDrinkCategoryHandler" prefHeight="46.0" prefWidth="165.0" style="-fx-background-color: #5e95be; -fx-background-radius: 5em;" text="Insert Category" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Charter Bold" size="18.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton id="btDelete" fx:id="btDeleteDrinkCategory" layoutX="731.0" layoutY="621.0" onAction="#deleteDrinkCategoryHandler" prefHeight="46.0" prefWidth="165.0" style="-fx-background-color: #5e95be; -fx-background-radius: 5em;" text="Delete Category" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Charter Bold" size="18.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton id="btUpdate" fx:id="btUpdateDrinkCategory" layoutX="551.0" layoutY="621.0" onAction="#updateDrinkCategoryHandler" prefHeight="46.0" prefWidth="165.0" style="-fx-background-color: #5e95be; -fx-background-radius: 5em;" text="Update Category" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Charter Bold" size="18.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="pDrinkMenu" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" visible="false">
+                     <children>
+                        <TableView id="CategoryTableView" fx:id="tbDrink" prefHeight="448.0" prefWidth="603.0">
+                           <columns>
+                              <TableColumn id="colCategoryID" fx:id="colIDDrink" prefWidth="100.0" text="Drink ID" />
+                              <TableColumn id="colCategoryName" fx:id="colNameDrink" prefWidth="200.0" text="Name's Drink" />
+                              <TableColumn id="colCategoryName" fx:id="colPriceDrink" prefWidth="150.0" text="Price's Drink" />
+                              <TableColumn id="colCategoryName" fx:id="colDrinkCategory" prefWidth="150.0" text="Drink Category ID" />
+                           </columns>
+                        </TableView>
+                        <Pane layoutX="608.0" layoutY="-1.0" prefHeight="448.0" prefWidth="335.0" style="-fx-border-color: #5e95be;">
+                           <children>
+                              <Label layoutX="127.0" layoutY="-3.0" prefHeight="35.0" prefWidth="82.0" style="-fx-font-family: Charter; -fx-font-size: 20px;" text="Drink ID" textAlignment="CENTER" textFill="#5e95be">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextField id="txtCategoryName" fx:id="txtDrinkID" editable="false" focusColor="#5e95be" layoutX="28.0" layoutY="35.0" maxWidth="279.0" minWidth="279.0" prefHeight="43.0" prefWidth="279.0">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField id="txtCategoryName" fx:id="txtNameDrink" focusColor="#5e95be" layoutX="28.0" layoutY="148.0" maxWidth="279.0" minWidth="279.0" prefHeight="43.0" prefWidth="279.0" promptText="Type Category Name...">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </JFXTextField>
+                              <Label layoutX="96.0" layoutY="113.0" prefHeight="35.0" prefWidth="144.0" style="-fx-font-family: Charter; -fx-font-size: 20px;" text="Name's Drink" textAlignment="CENTER" textFill="#5e95be">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextField id="txtCategoryName" fx:id="txtPriceDrink" focusColor="#5e95be" layoutX="28.0" layoutY="259.0" maxWidth="279.0" minWidth="279.0" prefHeight="43.0" prefWidth="279.0" promptText="Type Category Name...">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </JFXTextField>
+                              <Label layoutX="96.0" layoutY="224.0" prefHeight="35.0" prefWidth="144.0" style="-fx-font-family: Charter; -fx-font-size: 20px;" text="Price's Drink" textAlignment="CENTER" textFill="#5e95be">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="96.0" layoutY="345.0" prefHeight="35.0" prefWidth="144.0" style="-fx-font-family: Charter; -fx-font-size: 20px;" text="Category Name" textAlignment="CENTER" textFill="#5e95be">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <JFXComboBox id="cbCategoryName" fx:id="cbCategoryName" layoutX="33.0" layoutY="391.0" prefHeight="43.0" prefWidth="271.0" />
+                           </children>
+                        </Pane>
+                        <JFXButton id="btInsert" fx:id="btAddDrinkCategory1" layoutX="208.0" layoutY="596.0" onAction="#addDrinkCategoryHandler" prefHeight="46.0" prefWidth="165.0" style="-fx-background-color: #5e95be; -fx-background-radius: 5em;" text="Insert Drink" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Charter Bold" size="18.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton id="btUpdate" fx:id="btUpdateDrinkCategory1" layoutX="396.0" layoutY="596.0" onAction="#updateDrinkCategoryHandler" prefHeight="46.0" prefWidth="165.0" style="-fx-background-color: #5e95be; -fx-background-radius: 5em;" text="Update Drink" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Charter Bold" size="18.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton id="btDelete" fx:id="btDeleteDrinkCategory1" layoutX="579.0" layoutY="596.0" onAction="#deleteDrinkCategoryHandler" prefHeight="46.0" prefWidth="165.0" style="-fx-background-color: #5e95be; -fx-background-radius: 5em;" text="Delete Drink" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Charter Bold" size="18.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </Pane>
+               </children>
+            </StackPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

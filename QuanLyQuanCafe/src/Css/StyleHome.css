@@ -1,0 +1,19 @@
+.hover_border:hover{
+    -fx-border-color: #000000;
+    -fx-border-width: 0px 0px 0px 4px;
+    -fx-background-color: #5e95be;
+    -fx-cursor: hand;
+}
+.cursor_hand{
+    -fx-cursor: hand;
+}
+#colCategoryID, #colCategoryName, #txtCategoryID, #txtCategoryName, #cbCategoryName{
+    -fx-alignment: CENTER;
+}
+#paneBackground{
+    -fx-background-image: url("/Images/Background.jpg");
+}
+#btInsert:hover, #btUpdate:hover, #btDelete:hover{
+    -fx-cursor: hand;
+    -fx-border-width: 0px 0px 0px 4px;
+}
