@@ -54,6 +54,7 @@ import quanlyquancafe.pojo.DrinkCategory;
 public class FXMLHomeController implements Initializable {
     @FXML private Pane pDrinkCategory;
     @FXML private Button btCategory;
+    @FXML private Button btDrinkMenu;
     @FXML private Label lbDisplayName; 
     @FXML private TableView tbDrinkCategory;
     @FXML private TableColumn colIDDrinkCategory;
@@ -374,6 +375,13 @@ public class FXMLHomeController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb){   
+        //loại khách hàng
+        if(FXMLLoginController.getTypeNow() != 1) {
+            btCategory.setDisable(true);
+            btDrinkMenu.setDisable(true);
+        }
+        //set tên khách hàng
+        lbDisplayName.setText(FXMLLoginController.getdisplayNameNow());
         //Load bang Category
         this.colIDDrinkCategory.setCellValueFactory(new PropertyValueFactory("idDrinkCategory"));
         this.colDrinkCategoryName.setCellValueFactory(new PropertyValueFactory("nameDrinkCategory"));

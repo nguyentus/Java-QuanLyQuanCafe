@@ -1,0 +1,25 @@
+FXMLLoginController.java: thêm 
+				[line 53] private static int typeNow;
+					  private static String displayNameNow;
+				[line 69] typeNow = a.getType();
+					  displayNameNow = a.getDisplayName();
+				[line 121] public static int getTypeNow() {
+        					return typeNow;
+    					   }
+					   public static String getdisplayNameNow() {
+        					return displayNameNow;
+    					   }
+FXMLHomeController.java: thêm
+				[line 57] @FXML private Button btDrinkMenu;
+				
+				[line 378] if(FXMLLoginController.getTypeNow() != 1) {
+            				  	btCategory.setDisable(true);
+            					btDrinkMenu.setDisable(true);
+        				   }
+				[line 381] lbDisplayName.setText(FXMLLoginController.getdisplayNameNow());	   
+
+
+
+////////////////////////////////////////////
+chưa sửa được nếu nhập sai pass thì cảnh báo, còn nhập sai tên
+đăng nhập thì ko có thông báo 

@@ -48,6 +48,10 @@ public class FXMLLoginController implements Initializable {
     private Button btSubmit;
     @FXML
     private JFXPasswordField txtPassword;
+    
+    //lưu giá trị acc
+    private static int typeNow;
+    private static String displayNameNow;
     //Ham dang nhap
     private void Login(Event evt){
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -63,6 +67,8 @@ public class FXMLLoginController implements Initializable {
             while(iterator.hasNext()){
                 Account a = (Account)iterator.next();
                 if(txtAccount.getText().equals(a.getIdAccount().trim()) && txtPassword.getText().equals(a.getPassword().trim())){
+                    typeNow = a.getType();
+                    displayNameNow = a.getDisplayName();
                     //Xu ly chuyen Scene
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/Scenes/FXMLHome.fxml"));
                     Parent root = loader.load();
@@ -72,7 +78,7 @@ public class FXMLLoginController implements Initializable {
                     window.show();
                     Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
                     window.setX((primScreenBounds.getWidth() - window.getWidth()) / 2);
-                    window.setY((primScreenBounds.getHeight() - window.getHeight()) / 2);
+                    window.setY((primScreenBounds.getHeight() - window.getHeight()) / 2);   
                 }
                 else{
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -113,4 +119,11 @@ public class FXMLLoginController implements Initializable {
         
     }    
     
+    //lưu giá trị acc
+    public static int getTypeNow() {
+        return typeNow;
+    }
+    public static String getdisplayNameNow() {
+        return displayNameNow;
+    }
 }
