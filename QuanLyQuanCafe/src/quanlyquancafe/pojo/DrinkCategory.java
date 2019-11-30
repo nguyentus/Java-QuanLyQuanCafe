@@ -36,7 +36,7 @@ public class DrinkCategory implements Serializable {
     
     @Override
     public String toString() {
-        return String.valueOf(this.idDrinkCategory); 
+        return String.valueOf(this.nameDrinkCategory); 
     }
     
 }

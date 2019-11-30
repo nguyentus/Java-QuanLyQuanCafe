@@ -222,13 +222,13 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <StackPane prefHeight="803.0" prefWidth="952.0">
+            <StackPane prefHeight="803.0" prefWidth="952.0" styleClass="paneBackground">
                <children>
                   <Pane fx:id="pDrinkCategory" onDragDetected="#addDrinkCategoryHandler" prefHeight="541.0" prefWidth="952.0" style="-fx-background-color: transparent;" visible="false">
                      <children>
                         <TableView id="CategoryTableView" fx:id="tbDrinkCategory" prefHeight="453.0" prefWidth="282.0">
                           <columns>
-                            <TableColumn id="colCategoryID" fx:id="colIDDrinkCategory" prefWidth="100.0" text="Catagory ID" />
+                            <TableColumn id="colCategoryID" fx:id="colIDDrinkCategory" prefWidth="100.0" styleClass="colIDDrinkCategory" text="Catagory ID" />
                             <TableColumn id="colCategoryName" fx:id="colDrinkCategoryName" prefWidth="180.0" text="Category Name" />
                           </columns>
                         </TableView>
@@ -277,14 +277,14 @@
                         </JFXButton>
                      </children>
                   </Pane>
-                  <Pane fx:id="pDrinkMenu" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" visible="false">
+                  <Pane fx:id="pDrinkMenu" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;">
                      <children>
                         <TableView id="CategoryTableView" fx:id="tbDrink" prefHeight="448.0" prefWidth="603.0">
                            <columns>
                               <TableColumn id="colCategoryID" fx:id="colIDDrink" prefWidth="100.0" text="Drink ID" />
                               <TableColumn id="colCategoryName" fx:id="colNameDrink" prefWidth="200.0" text="Name's Drink" />
                               <TableColumn id="colCategoryName" fx:id="colPriceDrink" prefWidth="150.0" text="Price's Drink" />
-                              <TableColumn id="colCategoryName" fx:id="colDrinkCategory" prefWidth="150.0" text="Drink Category ID" />
+                              <TableColumn id="colCategoryName" fx:id="colDrinkCategory" prefWidth="150.0" text="Drink Category" />
                            </columns>
                         </TableView>
                         <Pane layoutX="608.0" layoutY="-1.0" prefHeight="448.0" prefWidth="335.0" style="-fx-border-color: #5e95be;">
@@ -294,7 +294,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <JFXTextField id="txtCategoryName" fx:id="txtDrinkID" editable="false" focusColor="#5e95be" layoutX="28.0" layoutY="35.0" maxWidth="279.0" minWidth="279.0" prefHeight="43.0" prefWidth="279.0">
+                              <JFXTextField id="txtCategoryName" fx:id="txtDrinkID" focusColor="#5e95be" layoutX="28.0" layoutY="35.0" maxWidth="279.0" minWidth="279.0" prefHeight="43.0" prefWidth="279.0">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -324,20 +324,20 @@
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <JFXComboBox id="cbCategoryName" fx:id="cbCategoryName" layoutX="33.0" layoutY="391.0" prefHeight="43.0" prefWidth="271.0" />
+                              <JFXComboBox fx:id="cbCategoryName" layoutX="33.0" layoutY="391.0" prefHeight="43.0" prefWidth="271.0" />
                            </children>
                         </Pane>
-                        <JFXButton id="btInsert" fx:id="btAddDrinkCategory1" layoutX="208.0" layoutY="596.0" onAction="#addDrinkCategoryHandler" prefHeight="46.0" prefWidth="165.0" style="-fx-background-color: #5e95be; -fx-background-radius: 5em;" text="Insert Drink" textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton id="btInsert" fx:id="btAddDrink" layoutX="208.0" layoutY="596.0" onAction="#addDrinkHandler" prefHeight="46.0" prefWidth="165.0" style="-fx-background-color: #5e95be; -fx-background-radius: 5em;" text="Insert Drink" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Charter Bold" size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton id="btUpdate" fx:id="btUpdateDrinkCategory1" layoutX="396.0" layoutY="596.0" onAction="#updateDrinkCategoryHandler" prefHeight="46.0" prefWidth="165.0" style="-fx-background-color: #5e95be; -fx-background-radius: 5em;" text="Update Drink" textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton id="btUpdate" fx:id="btUpdateDrink" layoutX="396.0" layoutY="596.0" onAction="#updateDrinkHandler" prefHeight="46.0" prefWidth="165.0" style="-fx-background-color: #5e95be; -fx-background-radius: 5em;" text="Update Drink" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Charter Bold" size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton id="btDelete" fx:id="btDeleteDrinkCategory1" layoutX="579.0" layoutY="596.0" onAction="#deleteDrinkCategoryHandler" prefHeight="46.0" prefWidth="165.0" style="-fx-background-color: #5e95be; -fx-background-radius: 5em;" text="Delete Drink" textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton id="btDelete" fx:id="btDeleteDrink" layoutX="579.0" layoutY="596.0" onAction="#deleteDrinkHandler" prefHeight="46.0" prefWidth="165.0" style="-fx-background-color: #5e95be; -fx-background-radius: 5em;" text="Delete Drink" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Charter Bold" size="18.0" />
                            </font>

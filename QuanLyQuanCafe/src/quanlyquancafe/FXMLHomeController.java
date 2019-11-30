@@ -27,6 +27,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
@@ -70,11 +71,14 @@ public class FXMLHomeController implements Initializable {
     @FXML private JFXTextField txtDrinkID;
     @FXML private JFXTextField txtNameDrink;
     @FXML private JFXTextField txtPriceDrink;
-    @FXML private JFXComboBox cbCategoryName;
+    @FXML private JFXComboBox<DrinkCategory> cbCategoryName;
     @FXML private TableColumn colIDDrink;
     @FXML private TableColumn colNameDrink;
     @FXML private TableColumn colPriceDrink;
     @FXML private TableColumn colDrinkCategory;
+    @FXML private JFXButton btAddDrink;
+    @FXML private JFXButton btUpdateDrink;
+    @FXML private JFXButton btDeleteDrink;
     //////////////////////////////////////////////////////DRINK CATEGORY///////////////////////////////////////////////////////
     
     //Chuyen Scene Category
@@ -99,20 +103,20 @@ public class FXMLHomeController implements Initializable {
             return row;
         });
     }
-    
-    List<DrinkCategory> drinkCategories = null;
     //Lay danh sach DrinkCategory
     private ObservableList<DrinkCategory> getDrinkCategories(String kw){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Criteria cr = session.createCriteria(DrinkCategory.class);
-        //Xu ly tim kiem
+    //Xu ly tim kiem
         if(kw != null && !kw.equals("")){
             kw = String.format("%%%s%%", kw);
             cr.add(Restrictions.or(Restrictions.ilike("nameDrinkCategory", kw)));
         }
+        //Lấy danh sách tất cả các DrinkCategory
+        List<DrinkCategory> drinkCategories = null;
         drinkCategories = cr.list();
-        for(DrinkCategory d : drinkCategories)
-            this.cbCategoryName.getItems().add(d.getNameDrinkCategory());
+        //Thêm DrinkCategory vào ComboBox 
+        this.cbCategoryName.getItems().addAll(drinkCategories);
         session.close();
         return FXCollections.observableArrayList(drinkCategories);
     }
@@ -223,7 +227,7 @@ public class FXMLHomeController implements Initializable {
                     txtDrinkID.setText(String.valueOf(d.getIdDrink()));
                     txtNameDrink.setText(d.getNameDrink());
                     txtPriceDrink.setText(String.valueOf(d.getPriceDrink()));
-                    cbCategoryName.setValue(d.getDrinkCategory().getNameDrinkCategory());
+                    cbCategoryName.setValue(d.getDrinkCategory());
                 }
             });
             return row;
@@ -248,21 +252,20 @@ public class FXMLHomeController implements Initializable {
     @FXML
     private void addDrinkHandler(ActionEvent event) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        int drinkCategoryID = 0;
-        for(DrinkCategory i : drinkCategories){
-            if(i.getNameDrinkCategory().equals(this.cbCategoryName.getSelectionModel().getSelectedItem().toString()))
-                drinkCategoryID = i.getIdDrinkCategory();
-        }
-        DrinkCategory drinkCategory = null;
-        Drink drink = new Drink(Integer.parseInt(this.txtDrinkID.getText()), this.txtNameDrink.getText(), Double.parseDouble(this.txtPriceDrink.getText()), drinkCategory);
+        Drink drink = new Drink();
+        drink.setIdDrink(Integer.parseInt(this.txtDrinkID.getText()));
+        drink.setNameDrink(this.txtNameDrink.getText());
+        drink.setPriceDrink(Double.parseDouble(this.txtPriceDrink.getText()));
+        
+        drink.setDrinkCategory((DrinkCategory) this.cbCategoryName.getSelectionModel().getSelectedItem());
         Transaction trans = null;
         Query q = session.createQuery("FROM Drink");
         try{
             trans = session.beginTransaction();
-            session.save(drinkCategory);
+            session.save(drink);
             trans.commit();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Insert Dink Category Successful!");
+            alert.setContentText("Insert Dink Successful!");
             alert.show();
             this.reloadTable("");
         }
@@ -270,66 +273,71 @@ public class FXMLHomeController implements Initializable {
             if(trans != null)
                 trans.rollback();
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Insert Dink Category Fail!");
+            alert.setContentText("Insert Dink Fail!");
             alert.show();
         }
         finally{
             session.close();
         }
     }
-//    //Cập Nhật Dữ Liệu
-//    @FXML
-//    private void updateDrinkCategoryHandler(ActionEvent event) {
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        try{
-//            if(!txtIDDrinkCategory.getText().isEmpty()){
-//               DrinkCategory dc = (DrinkCategory) session.get(DrinkCategory.class, Integer.parseInt(txtIDDrinkCategory.getText()));
-//               dc.setIdDrinkCategory(Integer.parseInt(txtIDDrinkCategory.getText()));
-//               dc.setNameDrinkCategory(txtNameDrinkCategory.getText());
-//               Transaction trans = session.beginTransaction();
-//               session.update(dc);
-//               trans.commit();
-//               this.reloadTableDrinkCategory("");
-//               Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//               alert.setContentText("Update Dink Category Successful!");
-//               alert.show();   
-//            }
-//        }
-//        catch(Exception ex){
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//            alert.setContentText("Update Dink Category Fail!");
-//            alert.show();   
-//        }
-//        finally{
-//            session.close();
-//        }
-//    }
-//    //Xoá dữ liệu
-//    @FXML
-//    private void deleteDrinkCategoryHandler(ActionEvent event) {
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        try{
-//            if(!txtIDDrinkCategory.getText().isEmpty()){      
-//               DrinkCategory dc = (DrinkCategory) session.get(DrinkCategory.class, Integer.parseInt(txtIDDrinkCategory.getText()));
-//               dc.setIdDrinkCategory(Integer.parseInt(txtIDDrinkCategory.getText()));
-//               Transaction trans = session.beginTransaction();
-//               session.delete(dc);
-//               trans.commit();
-//               this.reloadTableDrinkCategory("");
-//               Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//               alert.setContentText("Delete Dink Category Successful!");
-//               alert.show();   
-//        }
-//        }
-//        catch(Exception ex){
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//            alert.setContentText("Delete Dink Category Fail!");
-//            alert.show();   
-//        }
-//        finally{
-//            session.close();
-//        }
-//    }    
+    //Cập Nhật Dữ Liệu
+    @FXML
+    private void updateDrinkHandler(ActionEvent event) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try{
+            if(!txtDrinkID.getText().isEmpty()){
+               Drink d = (Drink) session.get(Drink.class, Integer.parseInt(txtDrinkID.getText()));
+               d.setIdDrink(Integer.parseInt(txtDrinkID.getText()));
+               d.setNameDrink(txtNameDrink.getText());
+               d.setPriceDrink(Double.parseDouble(txtPriceDrink.getText()));
+               d.setDrinkCategory((DrinkCategory) this.cbCategoryName.getSelectionModel().getSelectedItem());
+               Transaction trans = session.beginTransaction();
+               session.update(d);
+               trans.commit();
+               this.reloadTable("");
+               Alert alert = new Alert(Alert.AlertType.INFORMATION);
+               alert.setContentText("Update Dink Successful!");
+               alert.show();   
+            }
+        }
+        catch(Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Update Dink Fail!");
+            alert.show();   
+        }
+        finally{
+            session.close();
+        }
+    }
+    //Xoá dữ liệu
+    @FXML
+    private void deleteDrinkHandler(ActionEvent event) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try{
+            if(!txtDrinkID.getText().isEmpty()){
+               Drink d = (Drink) session.get(Drink.class, Integer.parseInt(txtDrinkID.getText()));
+               d.setIdDrink(Integer.parseInt(txtDrinkID.getText()));
+               d.setNameDrink(txtNameDrink.getText());
+               d.setPriceDrink(Double.parseDouble(txtPriceDrink.getText()));
+               d.setDrinkCategory((DrinkCategory) this.cbCategoryName.getSelectionModel().getSelectedItem());
+               Transaction trans = session.beginTransaction();
+               session.delete(d);
+               trans.commit();
+               this.reloadTable("");
+               Alert alert = new Alert(Alert.AlertType.INFORMATION);
+               alert.setContentText("Delete Dink Successful!");
+               alert.show();   
+            }
+        }
+        catch(Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Delete Dink Fail!");
+            alert.show();   
+        }
+        finally{
+            session.close();
+        }
+    }    
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -376,10 +384,10 @@ public class FXMLHomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb){   
         //loại khách hàng
-        if(FXMLLoginController.getTypeNow() != 1) {
-            btCategory.setDisable(true);
-            btDrinkMenu.setDisable(true);
-        }
+//        if(FXMLLoginController.getTypeNow() != 1) {
+//            btCategory.setDisable(true);
+//            btDrinkMenu.setDisable(true);
+//        }
         //set tên khách hàng
         lbDisplayName.setText(FXMLLoginController.getdisplayNameNow());
         //Load bang Category

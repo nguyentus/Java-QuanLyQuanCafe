@@ -7,7 +7,7 @@
 .cursor_hand{
     -fx-cursor: hand;
 }
-#colCategoryID, #colCategoryName, #txtCategoryID, #txtCategoryName, #cbCategoryName{
+#colCategoryID, #txtCategoryID, #txtCategoryName, #cbCategoryName{
     -fx-alignment: CENTER;
 }
 #paneBackground{
